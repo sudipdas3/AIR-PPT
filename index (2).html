@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#03060d">
+<meta name="description" content="B.Tech CSE AIR 2024 Sem 4 PPT Submission Google Form Links — Brainware University">
+<title>B.Tech CSE · Sem 4 PPT Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════════════
+   RESET & BASE
+════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  scroll-behavior:smooth;
+  /* Fluid root font: 14px @ 320px → 17px @ 1600px */
+  font-size:clamp(14px, calc(13px + 0.234vw), 17px);
+}
+body{
+  font-family:'Space Grotesk',system-ui,sans-serif;
+  background:#03060d;
+  color:#e2eaf5;
+  min-height:100dvh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ════════════════════════════════════════════════════
+   CSS CUSTOM PROPERTIES
+════════════════════════════════════════════════════ */
+:root{
+  --cyan:   #00d4ff;
+  --violet: #8b5cf6;
+  --amber:  #f59e0b;
+  --green:  #10b981;
+  --txt:    #e2eaf5;
+  --txt2:   #8ba3c4;
+  --txt3:   #4a6080;
+  --surface:rgba(8,18,36,0.88);
+  --border: rgba(0,212,255,0.13);
+  --r:      12px;
+  --pill:   999px;
+  --fd:     'Outfit',system-ui,sans-serif;
+  --fm:     'Fira Code',monospace;
+  /* Fluid spacing scale */
+  --sp-xs:  clamp(6px,  1.2vw,  10px);
+  --sp-sm:  clamp(10px, 2vw,    16px);
+  --sp-md:  clamp(14px, 3vw,    24px);
+  --sp-lg:  clamp(20px, 4.5vw,  40px);
+  --sp-xl:  clamp(32px, 7vw,    72px);
+  --sp-2xl: clamp(48px, 10vw,  100px);
+  /* Touch target minimum */
+  --touch:  44px;
+}
+
+/* ════════════════════════════════════════════════════
+   BACKGROUND LAYERS
+════════════════════════════════════════════════════ */
+.bg-mesh{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 55% at 15% 10%,rgba(0,212,255,.055) 0%,transparent 60%),
+    radial-gradient(ellipse 65% 70% at 85% 85%,rgba(139,92,246,.075) 0%,transparent 60%),
+    #03060d;
+}
+.bg-grid{
+  position:fixed;inset:0;z-index:1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,212,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,212,255,.04) 1px,transparent 1px);
+  background-size:clamp(36px,5vw,54px) clamp(36px,5vw,54px);
+  mask-image:radial-gradient(ellipse 100% 100% at 50% 50%,#000 20%,transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse 100% 100% at 50% 50%,#000 20%,transparent 80%);
+}
+.orb{position:fixed;border-radius:50%;pointer-events:none;filter:blur(clamp(50px,8vw,90px));z-index:1}
+.orb-1{width:clamp(220px,55vw,700px);height:clamp(160px,40vw,500px);background:radial-gradient(circle,rgba(0,212,255,.07) 0%,transparent 70%);top:-15%;left:-10%;animation:od1 22s ease-in-out infinite alternate}
+.orb-2{width:clamp(180px,48vw,600px);height:clamp(200px,52vw,660px);background:radial-gradient(circle,rgba(139,92,246,.09) 0%,transparent 70%);bottom:-15%;right:-10%;animation:od2 28s ease-in-out infinite alternate}
+@keyframes od1{0%{transform:translate(0,0)}100%{transform:translate(5vw,7vh)}}
+@keyframes od2{0%{transform:translate(0,0)}100%{transform:translate(-6vw,-5vh)}}
+#cvs{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.3}
+
+/* ════════════════════════════════════════════════════
+   ANIMATED BACKGROUND GESTURES
+════════════════════════════════════════════════════ */
+#bg-gestures{position:fixed;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+
+/* Floating geometric shapes */
+.geo-shape{
+  position:absolute;pointer-events:none;
+  border:1px solid;border-radius:4px;
+  animation:geo-float linear infinite;
+  opacity:0;
+}
+@keyframes geo-float{
+  0%  {opacity:0;transform:translateY(110vh) rotate(0deg)}
+  5%  {opacity:1}
+  95% {opacity:1}
+  100%{opacity:0;transform:translateY(-20vh) rotate(720deg)}
+}
+
+/* Pulsing rings */
+.pulse-ring{
+  position:absolute;border-radius:50%;pointer-events:none;
+  border:1px solid rgba(0,212,255,.18);
+  animation:ring-pulse ease-out infinite;
+}
+@keyframes ring-pulse{
+  0%  {transform:scale(.4);opacity:.8}
+  100%{transform:scale(3.5);opacity:0}
+}
+
+/* Data-stream lines */
+.data-stream{
+  position:absolute;pointer-events:none;
+  width:1px;
+  animation:stream-drop linear infinite;
+  opacity:0;
+  background:linear-gradient(180deg,transparent,rgba(0,212,255,.55),transparent);
+}
+@keyframes stream-drop{
+  0%  {opacity:0;top:-20%}
+  8%  {opacity:1}
+  92% {opacity:1}
+  100%{opacity:0;top:110%}
+}
+
+/* Hex grid nodes */
+.hex-node{
+  position:absolute;pointer-events:none;
+  width:clamp(6px,1.2vw,10px);height:clamp(6px,1.2vw,10px);
+  border-radius:50%;
+  animation:hex-blink ease-in-out infinite alternate;
+}
+@keyframes hex-blink{
+  0%  {opacity:.08;transform:scale(1)}
+  100%{opacity:.55;transform:scale(1.8)}
+}
+
+/* Diagonal scan line */
+.scan-line{
+  position:fixed;left:0;right:0;height:2px;z-index:3;pointer-events:none;
+  background:linear-gradient(90deg,transparent 0%,rgba(0,212,255,.06) 20%,rgba(0,212,255,.14) 50%,rgba(0,212,255,.06) 80%,transparent 100%);
+  animation:scan-move 9s linear infinite;
+  top:-2px;
+}
+@keyframes scan-move{
+  0%  {top:-2px}
+  100%{top:100vh}
+}
+
+/* Corner brackets */
+.corner-bracket{
+  position:fixed;width:clamp(24px,4vw,44px);height:clamp(24px,4vw,44px);
+  pointer-events:none;z-index:4;opacity:.18;
+  animation:bracket-pulse 4s ease-in-out infinite alternate;
+}
+@keyframes bracket-pulse{0%{opacity:.10}100%{opacity:.30}}
+.corner-bracket.tl{top:clamp(8px,1.5vw,18px);left:clamp(8px,1.5vw,18px);border-top:1.5px solid var(--cyan);border-left:1.5px solid var(--cyan)}
+.corner-bracket.tr{top:clamp(8px,1.5vw,18px);right:clamp(8px,1.5vw,18px);border-top:1.5px solid var(--cyan);border-right:1.5px solid var(--cyan)}
+.corner-bracket.bl{bottom:clamp(8px,1.5vw,18px);left:clamp(8px,1.5vw,18px);border-bottom:1.5px solid var(--violet);border-left:1.5px solid var(--violet)}
+.corner-bracket.br{bottom:clamp(8px,1.5vw,18px);right:clamp(8px,1.5vw,18px);border-bottom:1.5px solid var(--violet);border-right:1.5px solid var(--violet)}
+
+/* ════════════════════════════════════════════════════
+   PAGE SYSTEM
+════════════════════════════════════════════════════ */
+.page{
+  position:relative;z-index:10;
+  min-height:100dvh;
+  display:none;flex-direction:column;
+  align-items:center;justify-content:center;
+  /* Fluid side padding: 16px on 320px → 64px on 1400px */
+  padding:var(--sp-xl) clamp(16px,5vw,64px);
+  width:100%;
+}
+.page.active{display:flex}
+
+/* ════════════════════════════════════════════════════
+   HOME — FLUID SINGLE-LINE HEADINGS
+════════════════════════════════════════════════════ */
+.uni-badge{
+  display:inline-flex;align-items:center;gap:clamp(7px,1.5vw,10px);
+  background:rgba(0,212,255,.07);
+  border:1px solid rgba(0,212,255,.22);
+  border-radius:var(--pill);
+  padding:clamp(5px,1vw,8px) clamp(12px,2.5vw,20px);
+  /* Fluid badge text */
+  font-size:clamp(9px,2vw,12px);
+  font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);
+  margin-bottom:var(--sp-lg);
+  animation:fup .6s ease both;
+  white-space:nowrap;
+  max-width:96vw;
+}
+.badge-dot{
+  flex-shrink:0;width:clamp(5px,1.2vw,7px);height:clamp(5px,1.2vw,7px);
+  border-radius:50%;background:var(--cyan);
+  box-shadow:0 0 8px var(--cyan);
+  animation:blink 2s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+
+/* Single-line hero title strategy:
+   vw-only font-size shrinks with viewport, never wraps.
+   clamp caps min/max for readability. */
+.hero-title{
+  font-family:var(--fd);font-weight:900;
+  text-align:center;width:100%;
+  line-height:1.05;
+  margin-bottom:clamp(10px,2vw,18px);
+  animation:fup .65s ease .07s both;
+}
+.hero-line1{
+  display:block;
+  /* Fits "B.Tech CSE — Sem 4" on one line across all widths */
+  font-size:clamp(1.55rem,6.5vw,5.6rem);
+  white-space:nowrap;
+  background:linear-gradient(135deg,#fff 0%,var(--cyan) 48%,var(--violet) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:-.02em;
+  /* Shrink below 360px if needed */
+  max-width:100%;overflow:hidden;
+}
+.hero-line2{
+  display:block;
+  font-size:clamp(1rem,4.2vw,3.6rem);
+  white-space:nowrap;
+  color:rgba(255,255,255,.58);
+  font-weight:300;letter-spacing:.04em;
+  margin-top:clamp(4px,.8vw,10px);
+}
+/* Extra tiny phones: scale down proportionally */
+@media(max-width:359px){
+  .hero-line1{font-size:7.2vw}
+  .hero-line2{font-size:4.8vw}
+}
+
+.hero-sub{
+  font-family:var(--fm);
+  font-size:clamp(10px,1.8vw,14px);
+  color:var(--txt2);letter-spacing:.07em;
+  text-align:center;
+  margin-bottom:var(--sp-lg);
+  animation:fup .65s ease .13s both;
+  white-space:nowrap;
+}
+.hero-sub span{color:var(--cyan)}
+
+/* ─── Notice Card ─── */
+.notice-card{
+  width:min(640px,calc(100vw - 32px));
+  background:var(--surface);
+  border:1px solid rgba(245,158,11,.22);
+  border-left:3px solid var(--amber);
+  border-radius:var(--r);
+  padding:var(--sp-md) var(--sp-lg);
+  margin-bottom:var(--sp-lg);
+  font-size:clamp(11px,1.9vw,14px);
+  line-height:1.85;color:var(--txt2);
+  backdrop-filter:blur(14px);
+  animation:fup .65s ease .2s both;
+  position:relative;overflow:hidden;
+}
+.notice-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(245,158,11,.4),transparent);
+}
+.notice-label{
+  font-size:clamp(8px,1.4vw,10px);font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:7px;
+  display:flex;align-items:center;gap:5px;
+}
+.notice-card strong{color:#fcd34d;font-weight:600}
+
+/* ─── CTA Buttons ─── */
+.cta-group{
+  display:flex;flex-direction:column;align-items:center;
+  gap:clamp(12px,2.5vw,18px);
+  width:100%;
+  animation:fup .65s ease .27s both;
+}
+.btn-primary,.btn-secondary{
+  position:relative;
+  display:inline-flex;align-items:center;justify-content:center;gap:clamp(8px,1.5vw,12px);
+  font-family:var(--fd);font-weight:700;
+  border-radius:var(--pill);cursor:pointer;outline:none;
+  text-decoration:none;overflow:hidden;
+  white-space:nowrap;
+  /* Min touch target height */
+  min-height:var(--touch);
+  padding:clamp(12px,2.2vw,17px) clamp(22px,5vw,52px);
+  font-size:clamp(12px,2.2vw,16px);
+  letter-spacing:.01em;
+  transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  /* Prevent text from wrapping on very narrow screens via shrink */
+  max-width:min(440px,90vw);
+}
+.btn-primary{
+  color:#000;
+  background:linear-gradient(135deg,var(--cyan),#006eff);
+  border:none;
+  box-shadow:0 0 36px rgba(0,212,255,.32),0 4px 18px rgba(0,0,0,.4);
+}
+.btn-primary::after{
+  content:'';position:absolute;top:0;left:-120%;width:55%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
+  animation:shim 2.6s ease-in-out infinite;pointer-events:none;
+}
+@keyframes shim{0%{left:-120%}60%,100%{left:145%}}
+.btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 0 52px rgba(0,212,255,.44),0 8px 26px rgba(0,0,0,.5)}
+.btn-primary:active{transform:translateY(-1px) scale(.98)}
+
+.btn-secondary{
+  color:var(--txt);
+  background:transparent;
+  border:1.5px solid rgba(139,92,246,.5);
+  backdrop-filter:blur(8px);
+}
+.btn-secondary::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(139,92,246,.13),rgba(0,212,255,.07));
+  opacity:0;transition:opacity .16s ease;
+}
+.btn-secondary:hover{border-color:rgba(139,92,246,.8);box-shadow:0 0 28px rgba(139,92,246,.2)}
+.btn-secondary:hover::before{opacity:1}
+.btn-secondary:active{transform:scale(.98)}
+
+.btn-icon{font-size:1.1em;transition:transform .16s ease;position:relative;z-index:1}
+.btn-label{position:relative;z-index:1}
+.btn-primary:hover .btn-icon,.btn-secondary:hover .btn-icon{transform:translateX(4px)}
+
+/* ════════════════════════════════════════════════════
+   BACK BUTTON
+════════════════════════════════════════════════════ */
+.back-btn{
+  position:absolute;
+  top:clamp(14px,2.5vw,24px);
+  left:clamp(14px,2.5vw,24px);
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--border);
+  border-radius:var(--pill);
+  padding:clamp(8px,1.4vw,11px) clamp(14px,2.5vw,20px);
+  color:var(--txt2);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(11px,1.8vw,13px);font-weight:500;
+  cursor:pointer;z-index:20;white-space:nowrap;
+  min-height:var(--touch);
+  transition:all .15s ease;
+  -webkit-tap-highlight-color:transparent;
+  backdrop-filter:blur(10px);
+}
+.back-btn:hover{background:rgba(0,212,255,.09);color:var(--cyan);border-color:rgba(0,212,255,.38)}
+.back-btn:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+
+/* ════════════════════════════════════════════════════
+   SECTION HEADER — SINGLE-LINE TITLES
+════════════════════════════════════════════════════ */
+.section-header{
+  text-align:center;
+  margin-bottom:clamp(24px,4.5vw,48px);
+  width:100%;
+  animation:fup .45s ease both;
+}
+.section-eyebrow{
+  font-family:var(--fm);
+  font-size:clamp(8px,1.5vw,11px);
+  font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:9px;opacity:.85;
+  white-space:nowrap;
+}
+.section-title{
+  font-family:var(--fd);font-weight:800;
+  /* Single-line: vw-driven, clamp prevents too small/big */
+  font-size:clamp(1.45rem,4.8vw,3.1rem);
+  line-height:1.08;letter-spacing:-.02em;
+  white-space:nowrap;
+}
+.section-title em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--cyan),var(--violet));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.section-desc{
+  color:var(--txt2);font-size:clamp(11px,2vw,14px);
+  margin-top:9px;
+  white-space:nowrap;
+}
+/* Narrow viewports: allow wrap for section-title & desc if they must */
+@media(max-width:480px){
+  .section-title{white-space:normal;font-size:clamp(1.3rem,7vw,2rem)}
+  .section-desc{white-space:normal}
+}
+
+/* ════════════════════════════════════════════════════
+   CARDS GRID — FULLY RESPONSIVE
+════════════════════════════════════════════════════ */
+#subjects,#topics{
+  justify-content:flex-start;
+  padding-top:clamp(72px,13vw,120px);
+}
+
+.cards-grid{
+  display:grid;
+  /* auto-fill: ≥280px per card, collapses naturally */
+  grid-template-columns:repeat(auto-fill,minmax(clamp(240px,28vw,320px),1fr));
+  gap:clamp(10px,2vw,20px);
+  width:min(1100px,calc(100vw - 32px));
+}
+/* Force 3 col on large screens */
+@media(min-width:900px){.cards-grid{grid-template-columns:repeat(3,1fr)}}
+/* Force 2 col on tablets */
+@media(min-width:560px) and (max-width:899px){.cards-grid{grid-template-columns:repeat(2,1fr)}}
+/* 1 col on phones */
+@media(max-width:559px){.cards-grid{grid-template-columns:1fr}}
+
+/* ─── Card Base ─── */
+.subject-card,.topic-card{
+  position:relative;
+  display:flex;flex-direction:column;
+  gap:clamp(8px,1.4vw,13px);
+  padding:clamp(18px,3vw,26px) clamp(16px,2.5vw,24px) clamp(52px,8vw,68px);
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  color:var(--txt);
+  overflow:hidden;isolation:isolate;
+  opacity:0;transform:translateY(14px);
+  animation:cin .4s ease forwards;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+  backdrop-filter:blur(16px);
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.subject-card{text-decoration:none;cursor:pointer}
+.topic-card.clickable{cursor:pointer}
+
+/* Stagger delays */
+.subject-card:nth-child(1),.topic-card:nth-child(1){animation-delay:.04s}
+.subject-card:nth-child(2),.topic-card:nth-child(2){animation-delay:.08s}
+.subject-card:nth-child(3),.topic-card:nth-child(3){animation-delay:.12s}
+.subject-card:nth-child(4),.topic-card:nth-child(4){animation-delay:.16s}
+.subject-card:nth-child(5),.topic-card:nth-child(5){animation-delay:.20s}
+.subject-card:nth-child(6),.topic-card:nth-child(6){animation-delay:.24s}
+.topic-card:nth-child(7){animation-delay:.28s}
+@keyframes cin{to{opacity:1;transform:translateY(0)}}
+
+/* Hover glow overlay */
+.subject-card::before,.topic-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,212,255,.06),rgba(139,92,246,.06));
+  opacity:0;transition:opacity .2s ease;z-index:0;
+}
+/* Top accent on hover */
+.subject-card::after,.topic-card.clickable::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--cyan),var(--violet));
+  opacity:0;transition:opacity .2s ease;
+}
+.subject-card:hover::before,.subject-card:focus-visible::before,
+.topic-card.clickable:hover::before,.topic-card.clickable:focus-visible::before{opacity:1}
+.subject-card:hover::after,.subject-card:focus-visible::after,
+.topic-card.clickable:hover::after,.topic-card.clickable:focus-visible::after{opacity:1}
+
+.subject-card:hover,.topic-card.clickable:hover{
+  transform:translateY(-5px);
+  border-color:rgba(0,212,255,.35);
+  box-shadow:0 12px 38px rgba(0,0,0,.38),0 0 0 1px rgba(0,212,255,.07);
+  outline:none;
+}
+.subject-card:active,.topic-card.clickable:active{transform:translateY(-2px) scale(.99)}
+.subject-card:focus-visible,.topic-card.clickable:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+/* Green accent for topic clickables */
+.topic-card.clickable:hover::after{
+  background:linear-gradient(90deg,var(--green),var(--cyan));
+}
+.topic-card.clickable:hover{border-color:rgba(16,185,129,.32)}
+
+/* ─── Card Contents ─── */
+.card-num{
+  font-family:var(--fm);
+  font-size:clamp(8px,1.4vw,10px);
+  font-weight:500;color:var(--cyan);
+  background:rgba(0,212,255,.1);
+  border:1px solid rgba(0,212,255,.22);
+  padding:3px 10px;border-radius:var(--pill);
+  width:fit-content;letter-spacing:.12em;text-transform:uppercase;
+  position:relative;z-index:1;white-space:nowrap;
+}
+.card-name{
+  font-family:var(--fd);
+  font-size:clamp(12px,1.85vw,16px);
+  font-weight:700;color:var(--txt);
+  line-height:1.35;position:relative;z-index:1;
+}
+.card-code{
+  font-family:var(--fm);
+  font-size:clamp(10px,1.3vw,12px);
+  color:var(--txt3);font-weight:400;
+  letter-spacing:.06em;position:relative;z-index:1;
+}
+.card-deadline{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:clamp(10px,1.4vw,12px);font-weight:600;
+  color:#fbbf24;
+  background:rgba(245,158,11,.1);
+  border:1px solid rgba(245,158,11,.22);
+  border-radius:6px;padding:5px 10px;
+  position:relative;z-index:1;white-space:nowrap;
+}
+.card-status-ready{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:clamp(10px,1.4vw,11px);font-weight:600;
+  color:var(--green);
+  background:rgba(16,185,129,.09);
+  border:1px solid rgba(16,185,129,.22);
+  border-radius:6px;padding:5px 10px;
+  position:relative;z-index:1;white-space:nowrap;letter-spacing:.03em;
+}
+.card-status-pending{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:clamp(10px,1.4vw,11px);font-weight:500;
+  color:var(--txt3);
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:6px;padding:5px 10px;
+  position:relative;z-index:1;white-space:nowrap;
+}
+.card-arrow{
+  position:absolute;
+  right:clamp(13px,2.2vw,20px);bottom:clamp(13px,2.2vw,19px);
+  width:clamp(28px,4vw,34px);height:clamp(28px,4vw,34px);
+  border-radius:50%;
+  background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(12px,1.8vw,15px);color:var(--cyan);
+  opacity:0;transform:translate(4px,4px);
+  transition:all .18s ease;z-index:2;
+}
+.subject-card:hover .card-arrow,
+.topic-card.clickable:hover .card-arrow{opacity:1;transform:translate(0,0)}
+/* On touch: always show arrow for clickable topic cards */
+@media(hover:none){
+  .topic-card.clickable .card-arrow{opacity:1;transform:translate(0,0)}
+}
+.topic-card:not(.clickable) .card-arrow{display:none}
+
+/* ════════════════════════════════════════════════════
+   DETAIL PAGES — SINGLE-LINE HEADINGS
+════════════════════════════════════════════════════ */
+#ros-detail,#ms-detail,#daa-detail{
+  justify-content:flex-start;
+  padding-top:clamp(80px,13vw,128px);
+  /* Left-align the search bar and table while keeping header centered */
+  align-items:center;
+}
+/* Inner container for search + table — left-aligned block */
+#ros-detail .search-wrap,
+#ms-detail  .search-wrap,
+#daa-detail .search-wrap,
+#ros-detail .search-count,
+#ms-detail  .search-count,
+#daa-detail .search-count,
+#ros-detail .table-wrap,
+#ms-detail  .table-wrap,
+#daa-detail .table-wrap,
+#ros-detail .table-hint,
+#ms-detail  .table-hint,
+#daa-detail .table-hint{
+  /* Align to the left edge of the max-width container */
+  align-self:flex-start;
+  /* Constrain to same width as table */
+  max-width:min(980px,calc(100vw - 32px));
+}
+
+.detail-header{
+  text-align:center;
+  margin-bottom:clamp(14px,2.5vw,24px);
+  width:100%;
+  animation:fup .45s ease both;
+}
+.detail-header h2{
+  font-family:var(--fd);font-weight:800;
+  /* Single-line: "Robot Operating Systems", "Material Science", "Design & Analysis of Algorithms" */
+  font-size:clamp(1.2rem,4.2vw,2.7rem);
+  letter-spacing:-.02em;line-height:1.1;
+  white-space:nowrap;
+}
+/* Allow wrap only on the narrowest phones where even 4.2vw is not enough */
+@media(max-width:420px){.detail-header h2{white-space:normal;font-size:clamp(1.1rem,7vw,1.6rem)}}
+.detail-header h2 em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--cyan),var(--violet));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.detail-header p{
+  color:var(--txt2);
+  font-size:clamp(10px,1.7vw,13px);
+  margin-top:6px;font-family:var(--fm);
+  white-space:nowrap;
+}
+@media(max-width:440px){.detail-header p{white-space:normal}}
+
+.detail-meta{
+  display:flex;gap:8px;justify-content:center;flex-wrap:wrap;
+  margin-bottom:clamp(16px,3vw,28px);
+  animation:fup .45s ease .05s both;
+}
+.meta-pill{
+  font-family:var(--fm);
+  font-size:clamp(9px,1.4vw,11px);font-weight:500;
+  padding:clamp(4px,.8vw,6px) clamp(10px,2vw,15px);
+  border-radius:var(--pill);border:1px solid;letter-spacing:.06em;
+  white-space:nowrap;
+}
+.meta-pill.cyan {color:var(--cyan);background:rgba(0,212,255,.09);border-color:rgba(0,212,255,.26)}
+.meta-pill.slate{color:#94a3b8;  background:rgba(148,163,184,.06);border-color:rgba(148,163,184,.18)}
+.meta-pill.amber{color:#fbbf24;  background:rgba(251,191,36,.09); border-color:rgba(251,191,36,.24)}
+
+/* ════════════════════════════════════════════════════
+   SEARCH BAR — compact, left-aligned
+════════════════════════════════════════════════════ */
+.search-wrap{
+  /* Left-aligned: use full table width, no auto centering */
+  width:min(980px,calc(100vw - 32px));
+  margin:0 0 clamp(10px,2vw,16px) 0;
+  position:relative;
+  animation:fup .45s ease .09s both;
+  /* Constrain the input inside to a compact width */
+  display:flex;
+  align-items:center;
+}
+.search-icon{
+  position:absolute;left:12px;top:50%;
+  transform:translateY(-50%);color:var(--txt3);font-size:13px;
+  pointer-events:none;line-height:1;
+  z-index:1;
+}
+.search-input{
+  /* Compact fixed width — not full page width */
+  width:clamp(200px,32vw,340px);
+  padding:8px 14px 8px 34px;
+  background:var(--surface);
+  border:1.5px solid var(--border);
+  border-radius:var(--pill);
+  color:var(--txt);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(11px,1.6vw,13px);
+  outline:none;
+  transition:border-color .17s ease,box-shadow .17s ease,width .2s ease;
+  backdrop-filter:blur(14px);
+  min-height:36px;
+}
+.search-input::placeholder{color:var(--txt3)}
+.search-input:focus{
+  border-color:rgba(0,212,255,.5);
+  box-shadow:0 0 0 3px rgba(0,212,255,.09);
+  /* Slightly expand on focus for usability */
+  width:clamp(220px,38vw,400px);
+}
+@media(max-width:560px){
+  .search-input{width:calc(100vw - 32px)!important}
+}
+
+.search-count{
+  /* Left-aligned, same line as search or just below */
+  text-align:left;
+  font-family:var(--fm);font-size:clamp(9px,1.4vw,10px);
+  color:var(--txt3);
+  margin-bottom:clamp(8px,1.5vw,14px);letter-spacing:.06em;
+  animation:fup .38s ease both;
+  width:min(980px,calc(100vw - 32px));
+}
+.search-count strong{color:var(--cyan)}
+
+/* ════════════════════════════════════════════════════
+   TABLE — RESPONSIVE WITH HORIZONTAL SCROLL
+════════════════════════════════════════════════════ */
+.table-wrap{
+  width:min(980px,calc(100vw - 32px));
+  /* Responsive max-height: leaves room for header + search + meta + breathing space */
+  max-height:clamp(320px, calc(100dvh - 280px), 620px);
+  overflow-x:auto;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  border-radius:var(--r);
+  border:1px solid var(--border);
+  background:var(--surface);
+  backdrop-filter:blur(16px);
+  animation:fup .45s ease .11s both;
+  margin-bottom:clamp(28px,6vw,60px);
+  /* Custom scrollbars — both axes */
+  scrollbar-width:thin;
+  scrollbar-color:rgba(0,212,255,.38) rgba(0,212,255,.06);
+  /* Smooth scroll feel on all platforms */
+  scroll-behavior:smooth;
+}
+/* Webkit — horizontal scrollbar */
+.table-wrap::-webkit-scrollbar{width:6px;height:6px}
+.table-wrap::-webkit-scrollbar-track{background:rgba(0,212,255,.04);border-radius:6px}
+.table-wrap::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--cyan),var(--violet));
+  border-radius:6px;
+  border:1px solid rgba(0,0,0,.25);
+}
+.table-wrap::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#33ddff,#a78bfa)}
+.table-wrap::-webkit-scrollbar-corner{background:transparent}
+
+/* Sticky header so it stays visible while scrolling vertically */
+.data-table thead{position:sticky;top:0;z-index:2}
+.data-table thead tr{
+  background:linear-gradient(90deg,rgba(4,12,28,.97),rgba(8,16,38,.97));
+  backdrop-filter:blur(12px);
+  box-shadow:0 1px 0 rgba(0,212,255,.18);
+}
+
+/* Responsive max-height breakpoints */
+@media(max-height:700px){.table-wrap{max-height:clamp(260px,55dvh,400px)}}
+@media(max-height:500px){.table-wrap{max-height:220px}}
+@media(min-height:900px){.table-wrap{max-height:clamp(480px,58dvh,720px)}}
+
+.data-table{
+  width:100%;border-collapse:collapse;
+  /* Fluid table font */
+  font-size:clamp(10px,1.5vw,13px);
+  /* Minimum table width so columns aren't crushed */
+  min-width:520px;
+}
+.data-table thead tr{
+  background:linear-gradient(90deg,rgba(0,212,255,.09),rgba(139,92,246,.08));
+  border-bottom:1px solid rgba(0,212,255,.16);
+}
+.data-table th{
+  padding:clamp(10px,1.8vw,15px) clamp(8px,1.6vw,14px);
+  text-align:left;
+  font-family:var(--fm);font-size:clamp(8px,1.1vw,10px);
+  font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--cyan);white-space:nowrap;
+}
+.data-table td{
+  padding:clamp(10px,1.7vw,14px) clamp(8px,1.6vw,14px);
+  border-bottom:1px solid rgba(255,255,255,.04);
+  vertical-align:top;line-height:1.55;
+}
+.data-table tbody tr:last-child td{border-bottom:none}
+.data-table tbody tr{transition:background .12s ease}
+.data-table tbody tr:hover{background:rgba(0,212,255,.045)}
+
+.td-sl   {color:var(--txt3);font-weight:600;white-space:nowrap;font-family:var(--fm);font-size:.9em}
+.td-code {color:var(--cyan);font-weight:500;white-space:nowrap;font-family:var(--fm);font-size:.88em}
+.td-name {color:var(--txt);font-weight:500;min-width:130px}
+.td-date {white-space:nowrap;font-weight:600;color:#fbbf24;font-family:var(--fm);font-size:.88em}
+.td-presdate{white-space:nowrap;font-weight:600;color:var(--green);font-family:var(--fm);font-size:.88em}
+.td-topic{color:#c4d4e8;min-width:160px;max-width:320px;line-height:1.5}
+
+.no-results{
+  text-align:center;padding:clamp(28px,5vw,52px) 20px;
+  color:var(--txt3);font-size:clamp(11px,1.8vw,14px);font-style:italic;
+}
+
+/* Mobile table: show scroll hint */
+@media(max-width:600px){
+  .table-hint{
+    display:block;text-align:center;
+    font-size:10px;color:var(--txt3);
+    margin-bottom:6px;letter-spacing:.06em;
+    font-family:var(--fm);
+  }
+}
+.table-hint{display:none}
+
+/* ════════════════════════════════════════════════════
+   KEYFRAMES
+════════════════════════════════════════════════════ */
+@keyframes fup{
+  from{opacity:0;transform:translateY(16px)}
+  to  {opacity:1;transform:translateY(0)}
+}
+
+/* ════════════════════════════════════════════════════
+   REDUCED MOTION
+════════════════════════════════════════════════════ */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  .orb,.bg-grid{display:none}
+  #cvs{display:none}
+}
+
+/* ════════════════════════════════════════════════════
+   PRINT
+════════════════════════════════════════════════════ */
+@media print{
+  .bg-mesh,.bg-grid,.orb,#cvs{display:none}
+  .page{display:block!important;min-height:unset}
+  body{background:#fff;color:#000}
+}
+</style>
+</head>
+<body>
+
+<!-- Background -->
+<div class="bg-mesh" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<canvas id="cvs" aria-hidden="true"></canvas>
+<div id="bg-gestures" aria-hidden="true"></div>
+<div class="scan-line" aria-hidden="true"></div>
+<div class="corner-bracket tl" aria-hidden="true"></div>
+<div class="corner-bracket tr" aria-hidden="true"></div>
+<div class="corner-bracket bl" aria-hidden="true"></div>
+<div class="corner-bracket br" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════
+     HOME
+══════════════════════════════════════════ -->
+<main>
+<div class="page active" id="home" role="main">
+
+  <div class="uni-badge" aria-label="Brainware University AIR 2024">
+    <span class="badge-dot" aria-hidden="true"></span>
+    Brainware University &nbsp;·&nbsp; AIR 2024
+  </div>
+
+  <h1 class="hero-title">
+    <span class="hero-line1">B.Tech CSE &mdash; Sem 4</span>
+    <span class="hero-line2">PPT Submission Portal</span>
+  </h1>
+
+  <p class="hero-sub" aria-label="Google Form Links — Academic Year 2025–26">
+    <span>Google Form Links</span> &nbsp;/&nbsp; Academic Year 2025&ndash;26
+  </p>
+
+  <div class="notice-card" role="note" aria-label="Important notice">
+    <div class="notice-label">⚠ &nbsp;Important Notice</div>
+    Please ensure your presentation file name is correctly formatted as per the instructions given for each subject.
+    <br><strong>Strictly follow the last submission deadline for your subject.</strong>
+  </div>
+
+  <div class="cta-group">
+    <button class="btn-primary" id="ctaBtn" aria-label="Go to subject list to submit your presentation">
+      <span class="btn-label">Submit Your Presentation</span>
+      <span class="btn-icon" aria-hidden="true">→</span>
+    </button>
+    <button class="btn-secondary" id="topicBtn" aria-label="Find your assigned presentation topic">
+      <span class="btn-label">Find Your Assigned Topic</span>
+      <span class="btn-icon" aria-hidden="true">↗</span>
+    </button>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     SUBJECTS
+══════════════════════════════════════════ -->
+<div class="page" id="subjects" role="region" aria-label="Subject selection">
+  <button class="back-btn" id="backBtn" aria-label="Go back to home">← Back</button>
+
+  <div class="section-header">
+    <div class="section-eyebrow" aria-hidden="true">Step 01 — Choose Subject</div>
+    <h2 class="section-title">Select <em>Your Subject</em></h2>
+    <p class="section-desc">Tap a card to open the Google Form submission link</p>
+  </div>
+
+  <div class="cards-grid" role="list">
+
+    <a class="subject-card" href="https://forms.gle/kw13iFTVrpgHweSs9" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Submit for Robot Operating Systems, deadline March 31 2026">
+      <div class="card-num">Subject 01</div>
+      <div>
+        <div class="card-name">Robot Operating Systems</div>
+        <div class="card-code">BTR40105</div>
+      </div>
+      <div class="card-deadline">📅 March 31, 2026</div>
+      <div class="card-arrow" aria-hidden="true">↗</div>
+    </a>
+
+    <a class="subject-card" href="https://forms.gle/kw13iFTVrpgHweSs9" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Submit for Design Thinking for Entrepreneurship and Startups, deadline March 31 2026">
+      <div class="card-num">Subject 02</div>
+      <div>
+        <div class="card-name">Design Thinking for Entrepreneurship and Startups</div>
+        <div class="card-code">BHS00005</div>
+      </div>
+      <div class="card-deadline">📅 March 31, 2026</div>
+      <div class="card-arrow" aria-hidden="true">↗</div>
+    </a>
+
+    <a class="subject-card" href="https://forms.gle/kw13iFTVrpgHweSs9" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Submit for Object Oriented Programming, deadline March 31 2026">
+      <div class="card-num">Subject 03</div>
+      <div>
+        <div class="card-name">Object Oriented Programming</div>
+        <div class="card-code">BTR40107</div>
+      </div>
+      <div class="card-deadline">📅 March 31, 2026</div>
+      <div class="card-arrow" aria-hidden="true">↗</div>
+    </a>
+
+    <a class="subject-card" href="https://forms.gle/kw13iFTVrpgHweSs9" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Submit for Formal Language and Automata Theory, deadline March 31 2026">
+      <div class="card-num">Subject 04</div>
+      <div>
+        <div class="card-name">Formal Language and Automata Theory</div>
+        <div class="card-code">BTR40108</div>
+      </div>
+      <div class="card-deadline">📅 March 31, 2026</div>
+      <div class="card-arrow" aria-hidden="true">↗</div>
+    </a>
+
+    <a class="subject-card" href="https://forms.gle/kw13iFTVrpgHweSs9" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Submit for Material Science, deadline March 31 2026">
+      <div class="card-num">Subject 05</div>
+      <div>
+        <div class="card-name">Material Science</div>
+        <div class="card-code">BTR40109</div>
+      </div>
+      <div class="card-deadline">📅 March 31, 2026</div>
+      <div class="card-arrow" aria-hidden="true">↗</div>
+    </a>
+
+    <a class="subject-card" href="https://forms.gle/kw13iFTVrpgHweSs9" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Submit for Probability and Statistics, deadline March 31 2026">
+      <div class="card-num">Subject 06</div>
+      <div>
+        <div class="card-name">Probability and Statistics</div>
+        <div class="card-code">BBS00014</div>
+      </div>
+      <div class="card-deadline">📅 March 31, 2026</div>
+      <div class="card-arrow" aria-hidden="true">↗</div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TOPICS
+══════════════════════════════════════════ -->
+<div class="page" id="topics" role="region" aria-label="Presentation topics">
+  <button class="back-btn" id="backBtn2" aria-label="Go back to home">← Back</button>
+
+  <div class="section-header">
+    <div class="section-eyebrow" aria-hidden="true">Step 02 — Find Your Topic</div>
+    <h2 class="section-title">Your <em>Presentation Topics</em></h2>
+    <p class="section-desc">Locate your roll number and note your assigned topic</p>
+  </div>
+
+  <div class="cards-grid" role="list">
+
+    <div class="topic-card clickable" id="rosCard" role="listitem" tabindex="0" aria-label="View Robot Operating Systems topic list — topics available">
+      <div class="card-num" style="color:var(--cyan);background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.22)">Subject 01</div>
+      <div>
+        <div class="card-name">Robot Operating Systems</div>
+        <div class="card-code">BTR40105</div>
+      </div>
+      <div class="card-status-ready">✓ &nbsp;Topics available — tap to view</div>
+      <div class="card-arrow" aria-hidden="true">↗</div>
+    </div>
+
+    <div class="topic-card" role="listitem" aria-label="Design Thinking for Entrepreneurship — topics coming soon">
+      <div class="card-num">Subject 02</div>
+      <div>
+        <div class="card-name">Design Thinking for Entrepreneurship</div>
+        <div class="card-code">BHS00005</div>
+      </div>
+      <div class="card-status-pending">⏳ &nbsp;Topics will be updated soon</div>
+    </div>
+
+    <div class="topic-card" role="listitem" aria-label="Object Oriented Programming — topics coming soon">
+      <div class="card-num">Subject 03</div>
+      <div>
+        <div class="card-name">Object Oriented Programming</div>
+        <div class="card-code">BTR40107</div>
+      </div>
+      <div class="card-status-pending">⏳ &nbsp;Topics will be updated soon</div>
+    </div>
+
+    <div class="topic-card" role="listitem" aria-label="Formal Language and Automata Theory — topics coming soon">
+      <div class="card-num">Subject 04</div>
+      <div>
+        <div class="card-name">Formal Language and Automata Theory</div>
+        <div class="card-code">BTR40108</div>
+      </div>
+      <div class="card-status-pending">⏳ &nbsp;Topics will be updated soon</div>
+    </div>
+
+    <div class="topic-card clickable" id="msCard" role="listitem" tabindex="0" aria-label="View Material Science topic list — topics available">
+      <div class="card-num" style="color:var(--cyan);background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.22)">Subject 05</div>
+      <div>
+        <div class="card-name">Material Science</div>
+        <div class="card-code">BTR40109</div>
+      </div>
+      <div class="card-status-ready">✓ &nbsp;Topics available — tap to view</div>
+      <div class="card-arrow" aria-hidden="true">↗</div>
+    </div>
+
+    <div class="topic-card" role="listitem" aria-label="Probability and Statistics — topics coming soon">
+      <div class="card-num">Subject 06</div>
+      <div>
+        <div class="card-name">Probability and Statistics</div>
+        <div class="card-code">BBS00014</div>
+      </div>
+      <div class="card-status-pending">⏳ &nbsp;Topics will be updated soon</div>
+    </div>
+
+    <div class="topic-card clickable" id="daaCard" role="listitem" tabindex="0" aria-label="View Design and Analysis of Algorithms topic list — topics available">
+      <div class="card-num" style="color:var(--cyan);background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.22)">Subject 07</div>
+      <div>
+        <div class="card-name">Design and Analysis of Algorithms</div>
+        <div class="card-code">BTR40106</div>
+      </div>
+      <div class="card-status-ready">✓ &nbsp;Topics available — tap to view</div>
+      <div class="card-arrow" aria-hidden="true">↗</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ROS DETAIL
+══════════════════════════════════════════ -->
+<div class="page" id="ros-detail" role="region" aria-label="Robot Operating Systems topic list">
+  <button class="back-btn" id="backBtn3" aria-label="Go back to topics">← Back</button>
+  <div class="detail-header">
+    <h2>Robot <em>Operating Systems</em></h2>
+    <p>B.Tech CSE &ndash; AIR (4A) &nbsp;&middot;&nbsp; Year 2, Semester 4</p>
+  </div>
+  <div class="detail-meta">
+    <span class="meta-pill cyan">BTR40105</span>
+    <span class="meta-pill slate">Semester 4</span>
+    <span class="meta-pill amber">Year 2</span>
+  </div>
+  <div class="search-wrap">
+    <span class="search-icon" aria-hidden="true">🔍</span>
+    <input class="search-input" id="rosSearch" type="search" placeholder="Search by student code or name…" autocomplete="off" spellcheck="false" aria-label="Search students">
+  </div>
+  <div class="search-count" id="rosCount" aria-live="polite">Showing all <strong>56</strong> students</div>
+  <p class="table-hint" aria-hidden="true">← Scroll horizontally · ↕ Scroll vertically →</p>
+  <div class="table-wrap" role="region" aria-label="ROS topic assignment table" tabindex="0">
+    <table class="data-table" id="rosTable">
+      <thead><tr>
+        <th scope="col">Sl.</th>
+        <th scope="col">Student Code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Soft Copy Date</th>
+        <th scope="col">Presentation Topic</th>
+        <th scope="col">Pres. Date</th>
+      </tr></thead>
+      <tbody id="rosTbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MS DETAIL
+══════════════════════════════════════════ -->
+<div class="page" id="ms-detail" role="region" aria-label="Material Science topic list">
+  <button class="back-btn" id="backBtn4" aria-label="Go back to topics">← Back</button>
+  <div class="detail-header">
+    <h2>Material <em>Science</em></h2>
+    <p>B.Tech CSE &ndash; AIR &nbsp;&middot;&nbsp; Semester IV, Year 2</p>
+  </div>
+  <div class="detail-meta">
+    <span class="meta-pill cyan">BTR40109</span>
+    <span class="meta-pill slate">Semester 4</span>
+    <span class="meta-pill amber">Mech. Engineering</span>
+  </div>
+  <div class="search-wrap">
+    <span class="search-icon" aria-hidden="true">🔍</span>
+    <input class="search-input" id="msSearch" type="search" placeholder="Search by student code or name…" autocomplete="off" spellcheck="false" aria-label="Search students">
+  </div>
+  <div class="search-count" id="msCount" aria-live="polite">Showing all <strong>56</strong> students</div>
+  <p class="table-hint" aria-hidden="true">← Scroll horizontally · ↕ Scroll vertically →</p>
+  <div class="table-wrap" role="region" aria-label="Material Science topic assignment table" tabindex="0">
+    <table class="data-table" id="msTable">
+      <thead><tr>
+        <th scope="col">Sl.</th>
+        <th scope="col">Student Code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Presentation Topic</th>
+      </tr></thead>
+      <tbody id="msTbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAA DETAIL
+══════════════════════════════════════════ -->
+<div class="page" id="daa-detail" role="region" aria-label="Design and Analysis of Algorithms topic list">
+  <button class="back-btn" id="backBtn5" aria-label="Go back to topics">← Back</button>
+  <div class="detail-header">
+    <h2>Design &amp; Analysis <em>of Algorithms</em></h2>
+    <p>B.Tech CSE &ndash; AIR 2024 &nbsp;&middot;&nbsp; Semester 4</p>
+  </div>
+  <div class="detail-meta">
+    <span class="meta-pill cyan">BTR40106</span>
+    <span class="meta-pill slate">Semester 4</span>
+    <span class="meta-pill amber">Year 2</span>
+  </div>
+  <div class="search-wrap">
+    <span class="search-icon" aria-hidden="true">🔍</span>
+    <input class="search-input" id="daaSearch" type="search" placeholder="Search by student code or name…" autocomplete="off" spellcheck="false" aria-label="Search students">
+  </div>
+  <div class="search-count" id="daaCount" aria-live="polite">Showing all <strong>56</strong> students</div>
+  <p class="table-hint" aria-hidden="true">← Scroll horizontally · ↕ Scroll vertically →</p>
+  <div class="table-wrap" role="region" aria-label="DAA topic assignment table" tabindex="0">
+    <table class="data-table" id="daaTable">
+      <thead><tr>
+        <th scope="col">Sl.</th>
+        <th scope="col">Student Code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Soft Copy Date</th>
+        <th scope="col">Presentation Topic</th>
+        <th scope="col">Exam Date</th>
+      </tr></thead>
+      <tbody id="daaTbody"></tbody>
+    </table>
+  </div>
+</div>
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════
+   ANIMATED BACKGROUND GESTURES
+═══════════════════════════════════════════════ */
+(function(){
+  const container=document.getElementById('bg-gestures');
+  const W=()=>window.innerWidth,H=()=>window.innerHeight;
+  const rand=(a,b)=>Math.random()*(b-a)+a;
+  const pick=arr=>arr[Math.floor(Math.random()*arr.length)];
+  const colors=['rgba(0,212,255,','rgba(139,92,246,','rgba(245,158,11,','rgba(16,185,129,'];
+
+  /* ── Floating geometric shapes ── */
+  function spawnShape(){
+    const el=document.createElement('div');
+    el.className='geo-shape';
+    const sz=rand(8,28);
+    const col=pick(colors);
+    const shapes=['0%','50%','var(--r)'];
+    el.style.cssText=`
+      width:${sz}px;height:${sz}px;
+      left:${rand(2,96)}vw;
+      border-color:${col}0.35);
+      border-radius:${pick(shapes)};
+      animation-duration:${rand(14,32)}s;
+      animation-delay:${rand(0,8)}s;
+    `;
+    // some filled, some hollow
+    if(Math.random()<0.3) el.style.background=`${col}0.08)`;
+    container.appendChild(el);
+    // recycle
+    const dur=(parseFloat(el.style.animationDuration)||20)*1000;
+    const delay=(parseFloat(el.style.animationDelay)||0)*1000;
+    setTimeout(()=>{el.remove();spawnShape()},dur+delay+500);
+  }
+  const shapeCount=Math.min(18,Math.floor(W()/80));
+  for(let i=0;i<shapeCount;i++) setTimeout(spawnShape,rand(0,6000));
+
+  /* ── Pulsing rings ── */
+  function spawnRing(){
+    const el=document.createElement('div');
+    el.className='pulse-ring';
+    const sz=rand(40,120);
+    const col=pick(colors);
+    el.style.cssText=`
+      width:${sz}px;height:${sz}px;
+      left:${rand(5,90)}vw;
+      top:${rand(5,90)}vh;
+      border-color:${col}0.22);
+      animation-duration:${rand(3,6)}s;
+      animation-delay:${rand(0,4)}s;
+    `;
+    container.appendChild(el);
+    const dur=(parseFloat(el.style.animationDuration)||4)*1000;
+    const delay=(parseFloat(el.style.animationDelay)||0)*1000;
+    setTimeout(()=>{el.remove();spawnRing()},dur+delay+200);
+  }
+  const ringCount=Math.min(8,Math.floor(W()/200));
+  for(let i=0;i<ringCount;i++) setTimeout(spawnRing,rand(0,4000));
+
+  /* ── Data stream lines ── */
+  function spawnStream(){
+    const el=document.createElement('div');
+    el.className='data-stream';
+    const h=rand(60,200);
+    const col=pick(colors);
+    el.style.cssText=`
+      height:${h}px;
+      left:${rand(2,98)}vw;
+      background:linear-gradient(180deg,transparent,${col}0.5),transparent);
+      animation-duration:${rand(6,16)}s;
+      animation-delay:${rand(0,6)}s;
+    `;
+    container.appendChild(el);
+    const dur=(parseFloat(el.style.animationDuration)||10)*1000;
+    const delay=(parseFloat(el.style.animationDelay)||0)*1000;
+    setTimeout(()=>{el.remove();spawnStream()},dur+delay+300);
+  }
+  const streamCount=Math.min(12,Math.floor(W()/120));
+  for(let i=0;i<streamCount;i++) setTimeout(spawnStream,rand(0,5000));
+
+  /* ── Hex / dot nodes scattered across background ── */
+  (function spawnNodes(){
+    const count=Math.min(30,Math.floor((W()*H())/30000));
+    for(let i=0;i<count;i++){
+      const el=document.createElement('div');
+      el.className='hex-node';
+      const col=pick(colors);
+      el.style.cssText=`
+        left:${rand(2,96)}vw;
+        top:${rand(2,96)}vh;
+        background:${col}0.6);
+        box-shadow:0 0 ${rand(4,10)}px ${col}0.4);
+        animation-duration:${rand(2,6)}s;
+        animation-delay:${rand(0,4)}s;
+      `;
+      container.appendChild(el);
+    }
+  })();
+})();
+
+/* ═══════════════════════════════════════════════
+   CONSTELLATION CANVAS (lightweight)
+═══════════════════════════════════════════════ */
+(function(){
+  const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');
+  let W,H,dots=[];
+  const N=window.innerWidth<600?20:42;
+  const MD=window.innerWidth<600?90:130;
+  function resize(){W=cvs.width=window.innerWidth;H=cvs.height=window.innerHeight}
+  resize();
+  window.addEventListener('resize',resize,{passive:true});
+  for(let i=0;i<N;i++) dots.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,r:Math.random()*1.4+.5,c:i%3===0?'#00d4ff':i%3===1?'#8b5cf6':'#f59e0b'});
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    dots.forEach(d=>{d.x+=d.vx;d.y+=d.vy;if(d.x<0||d.x>W)d.vx*=-1;if(d.y<0||d.y>H)d.vy*=-1});
+    for(let i=0;i<dots.length;i++) for(let j=i+1;j<dots.length;j++){
+      const dx=dots[i].x-dots[j].x,dy=dots[i].y-dots[j].y,dist=Math.hypot(dx,dy);
+      if(dist<MD){ctx.beginPath();ctx.moveTo(dots[i].x,dots[i].y);ctx.lineTo(dots[j].x,dots[j].y);ctx.strokeStyle=`rgba(0,212,255,${(1-dist/MD)*.14})`;ctx.lineWidth=.5;ctx.stroke()}
+    }
+    dots.forEach(d=>{ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);ctx.fillStyle=d.c+'99';ctx.fill()});
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ═══════════════════════════════════════════════
+   DATA — ROS
+═══════════════════════════════════════════════ */
+const rosData=[
+  {sl:1, code:'BWU/BAR/24/001',name:'SOUMEN BHANDARI',                             sub:'4/3/2026', topic:'Introduction to Robotics: History and Evolution',            pres:'4/3/2026'},
+  {sl:2, code:'BWU/BAR/24/002',name:'DHRUBAJOTI KAR',                              sub:'4/3/2026', topic:'Applications of Robotics in Modern Industries',              pres:'4/3/2026'},
+  {sl:3, code:'BWU/BAR/24/003',name:'NIMESH SAMANTA',                              sub:'4/3/2026', topic:'Challenges in Robotics Development',                         pres:'4/3/2026'},
+  {sl:4, code:'BWU/BAR/24/004',name:'SUBHAJIT BHAKTA',                             sub:'4/3/2026', topic:'Introduction to Robot Operating System (ROS)',                pres:'4/3/2026'},
+  {sl:5, code:'BWU/BAR/24/007',name:'ATANU BISWAS',                                sub:'4/3/2026', topic:'Evolution and Goals of ROS',                                  pres:'4/3/2026'},
+  {sl:6, code:'BWU/BAR/24/008',name:'JOGA JYOTHENDRAVEERAVENKATAS ATYASURYAKANTH', sub:'4/3/2026', topic:'Importance of ROS in Modern Robotics',                       pres:'4/3/2026'},
+  {sl:7, code:'BWU/BAR/24/009',name:'SANIA AKTAR',                                 sub:'4/3/2026', topic:'ROS Architecture Overview',                                   pres:'4/3/2026'},
+  {sl:8, code:'BWU/BAR/24/010',name:'DIPSIKHA PAYRA',                              sub:'4/3/2026', topic:'ROS Nodes and Their Functions',                               pres:'4/3/2026'},
+  {sl:9, code:'BWU/BAR/24/011',name:'SUPARNA GHORA',                               sub:'4/3/2026', topic:'ROS Master and Parameter Server',                             pres:'4/3/2026'},
+  {sl:10,code:'BWU/BAR/24/012',name:'DIPIKA MAITY',                                sub:'4/3/2026', topic:'ROS Communication Layers',                                    pres:'4/3/2026'},
+  {sl:11,code:'BWU/BAR/24/013',name:'AKASH BAIRAGI',                               sub:'4/3/2026', topic:'ROS Computation Graph',                                       pres:'4/3/2026'},
+  {sl:12,code:'BWU/BAR/24/014',name:'ANKAN DUTTA',                                 sub:'4/3/2026', topic:'ROS Workspace and Package Structure',                         pres:'4/3/2026'},
+  {sl:13,code:'BWU/BAR/24/015',name:'ARNAB SAHANA',                                sub:'4/3/2026', topic:'Middleware in Robotics: Concept and Importance',              pres:'4/3/2026'},
+  {sl:14,code:'BWU/BAR/24/016',name:'SUPRAJIT DE',                                 sub:'4/3/2026', topic:'ROS Middleware Architecture',                                 pres:'4/3/2026'},
+  {sl:15,code:'BWU/BAR/24/019',name:'SHILPI BHOWMICK',                             sub:'4/3/2026', topic:'Comparison of ROS Middleware with Other Middleware Systems',  pres:'4/3/2026'},
+  {sl:16,code:'BWU/BAR/24/020',name:'MAHUYA BHOWMICK',                             sub:'4/3/2026', topic:'Introduction to ROS Tools',                                   pres:'4/9/2026'},
+  {sl:17,code:'BWU/BAR/24/021',name:'SAIKAT HAZRA',                                sub:'4/3/2026', topic:'RQT Tool in ROS',                                             pres:'4/9/2026'},
+  {sl:18,code:'BWU/BAR/24/023',name:'SK SAHIL UDDIN',                              sub:'4/3/2026', topic:'RViz Visualization Tool',                                     pres:'4/9/2026'},
+  {sl:19,code:'BWU/BAR/24/027',name:'SHANE ALI',                                   sub:'4/3/2026', topic:'Gazebo Simulation Environment',                               pres:'4/9/2026'},
+  {sl:20,code:'BWU/BAR/24/028',name:'PRERANA BANERJEE',                            sub:'4/3/2026', topic:'Integration of Gazebo with ROS',                              pres:'4/9/2026'},
+  {sl:21,code:'BWU/BAR/24/029',name:'ARNAB KUMAR JANA',                            sub:'4/3/2026', topic:'Importance of Visualization in Robotics',                     pres:'4/9/2026'},
+  {sl:22,code:'BWU/BAR/24/030',name:'ARIJIT SAIN',                                 sub:'4/3/2026', topic:'Simulation in Robotics Using ROS',                            pres:'4/9/2026'},
+  {sl:23,code:'BWU/BAR/24/031',name:'UJJAL DOLUI',                                 sub:'4/3/2026', topic:'Real-world vs Simulation-based Robotics',                     pres:'4/9/2026'},
+  {sl:24,code:'BWU/BAR/24/033',name:'ABHISHEK MONDAL',                             sub:'4/3/2026', topic:'Using RViz for Robot Visualization',                          pres:'4/9/2026'},
+  {sl:25,code:'BWU/BAR/24/034',name:'SANDIP PARAMANIK',                            sub:'4/3/2026', topic:'Message Passing Paradigm in ROS',                             pres:'4/9/2026'},
+  {sl:26,code:'BWU/BAR/24/035',name:'ARITRA MALIK',                                sub:'4/3/2026', topic:'ROS Topics: Concept and Working',                             pres:'4/9/2026'},
+  {sl:27,code:'BWU/BAR/24/036',name:'ANIRBAN SARKAR',                              sub:'4/3/2026', topic:'Publishers and Subscribers in ROS',                           pres:'4/9/2026'},
+  {sl:28,code:'BWU/BAR/24/037',name:'ANUBRATA BHATTACHARYA',                       sub:'4/3/2026', topic:'ROS Message Structure',                                       pres:'4/9/2026'},
+  {sl:29,code:'BWU/BAR/24/038',name:'MOULENDU SINHA',                              sub:'4/3/2026', topic:'Serialization and Deserialization in ROS',                    pres:'4/9/2026'},
+  {sl:30,code:'BWU/BAR/24/039',name:'MALAIKA FIRDOUS AMIR',                        sub:'4/3/2026', topic:'Custom ROS Messages',                                         pres:'4/9/2026'},
+  {sl:31,code:'BWU/BAR/24/040',name:'PRIYAM JANA',                                 sub:'4/3/2026', topic:'Creating Custom Message Types in ROS',                        pres:'4/9/2026'},
+  {sl:32,code:'BWU/BAR/24/042',name:'SOUMIK PAL',                                  sub:'4/3/2026', topic:'Best Practices for ROS Messages',                             pres:'4/9/2026'},
+  {sl:33,code:'BWU/BAR/24/044',name:'HIRAK GANGULY',                               sub:'4/3/2026', topic:'ROS Services: Concept and Working',                           pres:'4/9/2026'},
+  {sl:34,code:'BWU/BAR/24/045',name:'SIBKATULLA AL ISLAM',                         sub:'4/3/2026', topic:'ROS Actions: Concept and Working',                            pres:'4/9/2026'},
+  {sl:35,code:'BWU/BAR/24/046',name:'TURNA BERA',                                  sub:'4/3/2026', topic:'Services vs Actions in ROS',                                  pres:'4/9/2026'},
+  {sl:36,code:'BWU/BAR/24/047',name:'KUNTAL MANDAL',                               sub:'4/3/2026', topic:'Topics vs Services vs Actions Comparison',                    pres:'4/9/2026'},
+  {sl:37,code:'BWU/BAR/24/048',name:'SUDIP DAS',                                   sub:'4/3/2026', topic:'ROS Package Development Process',                             pres:'4/9/2026'},
+  {sl:38,code:'BWU/BAR/24/049',name:'RAJARSHEE BERA',                              sub:'4/3/2026', topic:'Structure of a ROS Package',                                  pres:'4/9/2026'},
+  {sl:39,code:'BWU/BAR/24/050',name:'KAZI WASIM AKRAM',                            sub:'4/3/2026', topic:'Guidelines and Best Practices for ROS Development',           pres:'4/9/2026'},
+  {sl:40,code:'BWU/BAR/24/052',name:'GAUSUL AZAM SK',                              sub:'4/3/2026', topic:'ROS Programming Using Python',                                pres:'4/9/2026'},
+  {sl:41,code:'BWU/BAR/24/053',name:'MASUDUL ALAM',                                sub:'4/3/2026', topic:'ROS Programming Using C++',                                   pres:'4/9/2026'},
+  {sl:42,code:'BWU/BAR/24/054',name:'SUBHAM KUMBHAKAR',                            sub:'4/3/2026', topic:'Python vs C++ in ROS',                                        pres:'4/9/2026'},
+  {sl:43,code:'BWU/BAR/24/055',name:'ARITRIK DEV',                                 sub:'4/3/2026', topic:'ROS Testing Techniques',                                      pres:'4/9/2026'},
+  {sl:44,code:'BWU/BAR/24/056',name:'KRISH BISHWAKARMA',                           sub:'4/3/2026', topic:'Debugging ROS Programs',                                      pres:'4/9/2026'},
+  {sl:45,code:'BWU/BAR/24/057',name:'BARNALI MANDAL',                              sub:'4/3/2026', topic:'Integration of Sensors with ROS',                             pres:'4/9/2026'},
+  {sl:46,code:'BWU/BAR/24/058',name:'ROHAN KAR',                                   sub:'4/3/2026', topic:'Integration of Actuators with ROS',                           pres:'4/10/2026'},
+  {sl:47,code:'BWU/BAR/24/059',name:'ROHON DAS',                                   sub:'4/3/2026', topic:'ROS Middleware Integration (ROS Bridge and ROS2)',             pres:'4/10/2026'},
+  {sl:48,code:'BWU/BAR/24/062',name:'DEBABRATA DEY',                               sub:'4/3/2026', topic:'Overview of ROS Navigation Stack',                            pres:'4/10/2026'},
+  {sl:49,code:'BWU/BAR/24/063',name:'PRAGYANSHU SAGAR GIRI',                       sub:'4/3/2026', topic:'Robot Localization Techniques in ROS',                        pres:'4/10/2026'},
+  {sl:50,code:'BWU/BAR/24/065',name:'MAHAPRASHAD KARMAKAR',                        sub:'4/3/2026', topic:'Introduction to SLAM in ROS',                                 pres:'4/10/2026'},
+  {sl:51,code:'BWU/BAR/24/066',name:'Mohit Kumar',                                 sub:'4/3/2026', topic:'Mapping Techniques in ROS',                                   pres:'4/10/2026'},
+  {sl:52,code:'BWU/BAR/24/069',name:'Biswajit Chakraborty',                        sub:'4/3/2026', topic:'Path Planning Algorithms in ROS',                             pres:'4/10/2026'},
+  {sl:53,code:'BWU/BAR/24/070',name:'Disha Mandal',                                sub:'4/3/2026', topic:'Autonomous Navigation Using ROS',                             pres:'4/10/2026'},
+  {sl:54,code:'BWU/BAR/24/071',name:'Dipan Paul',                                  sub:'4/3/2026', topic:'ROS Security Mechanisms',                                     pres:'4/10/2026'},
+  {sl:55,code:'BWU/BAR/24/072',name:'Sagar Sk',                                    sub:'4/3/2026', topic:'Authentication and Authorization in ROS',                     pres:'4/10/2026'},
+  {sl:56,code:'BWU/BAR/24/073',name:'Sayan Basak',                                 sub:'4/3/2026', topic:'Real-Time Systems in ROS',                                    pres:'4/10/2026'},
+];
+
+/* ═══════════════════════════════════════════════
+   DATA — MATERIAL SCIENCE
+═══════════════════════════════════════════════ */
+const msData=[
+  {sl:1, code:'BWU/BAR/24/001',name:'SOUMEN BHANDARI',                             topic:'Evolution of Materials from Stone Age to Modern Engineering'},
+  {sl:2, code:'BWU/BAR/24/002',name:'DHRUBAJOTI KAR',                              topic:'Importance of Materials Science in Engineering Applications'},
+  {sl:3, code:'BWU/BAR/24/003',name:'NIMESH SAMANTA',                              topic:'Structure–Property Relationship in Materials'},
+  {sl:4, code:'BWU/BAR/24/004',name:'SUBHAJIT BHAKTA',                             topic:'Processing–Structure–Property–Performance Correlation'},
+  {sl:5, code:'BWU/BAR/24/007',name:'ATANU BISWAS',                                topic:'Engineering Materials: Historical Development and Trends'},
+  {sl:6, code:'BWU/BAR/24/008',name:'JOGA JYOTHENDRAVEERAVENKATAS ATYASURYAKANTH', topic:'Advanced Materials and Their Industrial Applications'},
+  {sl:7, code:'BWU/BAR/24/009',name:'SANIA AKTAR',                                 topic:'Smart Materials and Their Role in Modern Technology'},
+  {sl:8, code:'BWU/BAR/24/010',name:'DIPSIKHA PAYRA',                              topic:'Nanomaterials: Introduction and Applications'},
+  {sl:9, code:'BWU/BAR/24/011',name:'SUPARNA GHORA',                               topic:'Materials Selection in Engineering Design'},
+  {sl:10,code:'BWU/BAR/24/012',name:'DIPIKA MAITY',                                topic:'Role of Materials Science in Aerospace Industry'},
+  {sl:11,code:'BWU/BAR/24/013',name:'AKASH BAIRAGI',                               topic:'Role of Materials Science in Biomedical Engineering'},
+  {sl:12,code:'BWU/BAR/24/014',name:'ANKAN DUTTA',                                 topic:'Case Study: Failure Analysis Due to Improper Material Selection'},
+  {sl:13,code:'BWU/BAR/24/015',name:'ARNAB SAHANA',                                topic:'Fundamentals of Electronic Energy Band Theory'},
+  {sl:14,code:'BWU/BAR/24/016',name:'SUPRAJIT DE',                                 topic:'Free Electron Theory of Metals'},
+  {sl:15,code:'BWU/BAR/24/019',name:'SHILPI BHOWMICK',                             topic:'Classical Free Electron Theory vs Quantum Free Electron Theory'},
+  {sl:16,code:'BWU/BAR/24/020',name:'MAHUYA BHOWMICK',                             topic:'Sommerfeld Free Electron Theory'},
+  {sl:17,code:'BWU/BAR/24/021',name:'SAIKAT HAZRA',                                topic:'Formation of Energy Bands in Solids'},
+  {sl:18,code:'BWU/BAR/24/023',name:'SK SAHIL UDDIN',                              topic:'Conductors, Semiconductors, and Insulators Based on Band Theory'},
+  {sl:19,code:'BWU/BAR/24/027',name:'SHANE ALI',                                   topic:'Fermi Energy and Fermi Surface'},
+  {sl:20,code:'BWU/BAR/24/028',name:'PRERANA BANERJEE',                            topic:'Effective Mass of Electron and Its Importance'},
+  {sl:21,code:'BWU/BAR/24/029',name:'ARNAB KUMAR JANA',                            topic:'Brillouin Zones and Their Physical Significance'},
+  {sl:22,code:'BWU/BAR/24/030',name:'ARIJIT SAIN',                                 topic:'Electrical Conduction Mechanism in Solids'},
+  {sl:23,code:'BWU/BAR/24/031',name:'UJJAL DOLUI',                                 topic:'Coordination Number and Packing Density'},
+  {sl:24,code:'BWU/BAR/24/033',name:'ABHISHEK MONDAL',                             topic:'Simple Cubic, BCC, and FCC Structures Comparison'},
+  {sl:25,code:'BWU/BAR/24/034',name:'SANDIP PARAMANIK',                            topic:'Hexagonal Close Packed (HCP) Structure'},
+  {sl:26,code:'BWU/BAR/24/035',name:'ARITRA MALIK',                                topic:'Bragg\'s Law and X-ray Diffraction'},
+  {sl:27,code:'BWU/BAR/24/036',name:'ANIRBAN SARKAR',                              topic:'Point Defects in Crystals'},
+  {sl:28,code:'BWU/BAR/24/037',name:'ANUBRATA BHATTACHARYA',                       topic:'Line Defects (Dislocations) and Their Effects'},
+  {sl:29,code:'BWU/BAR/24/038',name:'MOULENDU SINHA',                              topic:'Surface Defects and Grain Boundaries'},
+  {sl:30,code:'BWU/BAR/24/039',name:'MALAIKA FIRDOUS AMIR',                        topic:'Volume Defects and Their Engineering Significance'},
+  {sl:31,code:'BWU/BAR/24/040',name:'PRIYAM JANA',                                 topic:'Classification of Engineering Materials'},
+  {sl:32,code:'BWU/BAR/24/042',name:'SOUMIK PAL',                                  topic:'Metallic Materials: Structure and Properties'},
+  {sl:33,code:'BWU/BAR/24/044',name:'HIRAK GANGULY',                               topic:'Ceramic Materials: Properties and Applications'},
+  {sl:34,code:'BWU/BAR/24/045',name:'SIBKATULLA AL ISLAM',                         topic:'Polymeric Materials: Types and Applications'},
+  {sl:35,code:'BWU/BAR/24/046',name:'TURNA BERA',                                  topic:'Composite Materials and Their Advantages'},
+  {sl:36,code:'BWU/BAR/24/047',name:'KUNTAL MANDAL',                               topic:'Magnetic Materials and Their Applications'},
+  {sl:37,code:'BWU/BAR/24/048',name:'SUDIP DAS',                                   topic:'Electronic Materials in Semiconductor Devices'},
+  {sl:38,code:'BWU/BAR/24/049',name:'RAJARSHEE BERA',                              topic:'Ferrous and Non-Ferrous Alloys'},
+  {sl:39,code:'BWU/BAR/24/050',name:'KAZI WASIM AKRAM',                            topic:'Biomaterials and Their Engineering Applications'},
+  {sl:40,code:'BWU/BAR/24/052',name:'GAUSUL AZAM SK',                              topic:'Advanced Composite Materials in Aerospace'},
+  {sl:41,code:'BWU/BAR/24/053',name:'MASUDUL ALAM',                                topic:'Mechanical Properties of Materials: Stress and Strain'},
+  {sl:42,code:'BWU/BAR/24/054',name:'SUBHAM KUMBHAKAR',                            topic:'Elastic and Plastic Deformation in Materials'},
+  {sl:43,code:'BWU/BAR/24/055',name:'ARITRIK DEV',                                 topic:'Hardness and Hardness Testing Methods'},
+  {sl:44,code:'BWU/BAR/24/056',name:'KRISH BISHWAKARMA',                           topic:'Electrical Properties of Materials and Ohm\'s Law'},
+  {sl:45,code:'BWU/BAR/24/057',name:'BARNALI MANDAL',                              topic:'Electronic and Ionic Conduction in Materials'},
+  {sl:46,code:'BWU/BAR/24/058',name:'ROHAN KAR',                                   topic:'Intrinsic and Extrinsic Semiconductors'},
+  {sl:47,code:'BWU/BAR/24/059',name:'ROHON DAS',                                   topic:'Thermal Properties of Materials'},
+  {sl:48,code:'BWU/BAR/24/062',name:'DEBABRATA DEY',                               topic:'Thermal Conductivity and Thermal Diffusivity'},
+  {sl:49,code:'BWU/BAR/24/063',name:'PRAGYANSHU SAGAR GIRI',                       topic:'Physical Properties of Materials and Their Importance'},
+  {sl:50,code:'BWU/BAR/24/065',name:'MAHAPRASHAD KARMAKAR',                        topic:'Material Selection Based on Mechanical, Electrical, and Thermal Properties'},
+  {sl:51,code:'BWU/BAR/24/066',name:'Mohit Kumar',                                 topic:'Density of States in Solids'},
+  {sl:52,code:'BWU/BAR/24/069',name:'Biswajit Chakraborty',                        topic:'Energy Band Gap and Its Importance in Semiconductors'},
+  {sl:53,code:'BWU/BAR/24/070',name:'Disha Mandal',                                topic:'Crystal Structure and Unit Cell Concepts'},
+  {sl:54,code:'BWU/BAR/24/071',name:'Dipan Paul',                                  topic:'Bravais Lattices and Their Types'},
+  {sl:55,code:'BWU/BAR/24/072',name:'Sagar Sk',                                    topic:'Symmetry Elements in Crystal Structures'},
+  {sl:56,code:'BWU/BAR/24/073',name:'Sayan Basak',                                 topic:'Atomic Packing Factor (APF) and Its Importance'},
+];
+
+/* ═══════════════════════════════════════════════
+   DATA — DAA
+═══════════════════════════════════════════════ */
+const daaData=[
+  {sl:1, code:'BWU/BAR/24/001',name:'SOUMEN BHANDARI',                             sub:'01.04.2026',topic:'Stages of algorithm development for problem-solving',              pres:'08.04.2026'},
+  {sl:2, code:'BWU/BAR/24/002',name:'DHRUBAJOTI KAR',                              sub:'01.04.2026',topic:'Proof of correctness of algorithms',                               pres:'08.04.2026'},
+  {sl:3, code:'BWU/BAR/24/003',name:'NIMESH SAMANTA',                              sub:'01.04.2026',topic:'Understanding asymptotic notation',                                 pres:'08.04.2026'},
+  {sl:4, code:'BWU/BAR/24/004',name:'SUBHAJIT BHAKTA',                             sub:'01.04.2026',topic:'Recurrence relation basics',                                       pres:'08.04.2026'},
+  {sl:5, code:'BWU/BAR/24/007',name:'ATANU BISWAS',                                sub:'01.04.2026',topic:'Methods to solve recurrence relations',                            pres:'08.04.2026'},
+  {sl:6, code:'BWU/BAR/24/008',name:'JOGA JYOTHENDRAVEERAVENKATAS ATYASURYAKANTH', sub:'01.04.2026',topic:'Master Theorem in recurrence relations',                          pres:'08.04.2026'},
+  {sl:7, code:'BWU/BAR/24/009',name:'SANIA AKTAR',                                 sub:'01.04.2026',topic:'Substitution method in recurrence relations',                     pres:'08.04.2026'},
+  {sl:8, code:'BWU/BAR/24/010',name:'DIPSIKHA PAYRA',                              sub:'01.04.2026',topic:'Recurrence tree method',                                          pres:'08.04.2026'},
+  {sl:9, code:'BWU/BAR/24/011',name:'SUPARNA GHORA',                               sub:'01.04.2026',topic:'Brute force techniques overview',                                 pres:'08.04.2026'},
+  {sl:10,code:'BWU/BAR/24/012',name:'DIPIKA MAITY',                                sub:'01.04.2026',topic:'Solving the Traveling Salesman Problem with brute force',         pres:'08.04.2026'},
+  {sl:11,code:'BWU/BAR/24/013',name:'AKASH BAIRAGI',                               sub:'01.04.2026',topic:'Divide and conquer algorithm basics',                             pres:'08.04.2026'},
+  {sl:12,code:'BWU/BAR/24/014',name:'ANKAN DUTTA',                                 sub:'01.04.2026',topic:'Strassen\'s algorithm for matrix multiplication',                 pres:'08.04.2026'},
+  {sl:13,code:'BWU/BAR/24/015',name:'ARNAB SAHANA',                                sub:'01.04.2026',topic:'Greedy techniques introduction',                                  pres:'08.04.2026'},
+  {sl:14,code:'BWU/BAR/24/016',name:'SUPRAJIT DE',                                 sub:'01.04.2026',topic:'Huffman Codes and data compression overview',                     pres:'08.04.2026'},
+  {sl:15,code:'BWU/BAR/24/019',name:'SHILPI BHOWMICK',                             sub:'01.04.2026',topic:'Solving the Fractional Knapsack problem with greedy technique',   pres:'10.04.2026'},
+  {sl:16,code:'BWU/BAR/24/020',name:'MAHUYA BHOWMICK',                             sub:'01.04.2026',topic:'Introduction to dynamic programming',                             pres:'10.04.2026'},
+  {sl:17,code:'BWU/BAR/24/021',name:'SAIKAT HAZRA',                                sub:'01.04.2026',topic:'Solving the 0/1 Knapsack problem with dynamic programming',      pres:'10.04.2026'},
+  {sl:18,code:'BWU/BAR/24/023',name:'SK SAHIL UDDIN',                              sub:'01.04.2026',topic:'Matrix chain multiplication using dynamic programming',           pres:'10.04.2026'},
+  {sl:19,code:'BWU/BAR/24/027',name:'SHANE ALI',                                   sub:'01.04.2026',topic:'Longest Common Subsequence (LCS) with dynamic programming',      pres:'10.04.2026'},
+  {sl:20,code:'BWU/BAR/24/028',name:'PRERANA BANERJEE',                            sub:'01.04.2026',topic:'Travelling Salesman Problem with dynamic programming',            pres:'10.04.2026'},
+  {sl:21,code:'BWU/BAR/24/029',name:'ARNAB KUMAR JANA',                            sub:'01.04.2026',topic:'Introduction to backtracking',                                    pres:'10.04.2026'},
+  {sl:22,code:'BWU/BAR/24/030',name:'ARIJIT SAIN',                                 sub:'01.04.2026',topic:'Solving the N-Queens Problem with backtracking',                 pres:'15.04.2026'},
+  {sl:23,code:'BWU/BAR/24/066',name:'Mohit Kumar',                                 sub:'01.04.2026',topic:'Knight\'s Tour on Chess Board with backtracking',                pres:'15.04.2026'},
+  {sl:24,code:'BWU/BAR/24/069',name:'Biswajit Chakraborty',                        sub:'01.04.2026',topic:'Naïve String Matching Algorithms',                               pres:'15.04.2026'},
+  {sl:25,code:'BWU/BAR/24/070',name:'Disha Mandal',                                sub:'01.04.2026',topic:'Introduction to the KMP algorithm',                              pres:'15.04.2026'},
+  {sl:26,code:'BWU/BAR/24/071',name:'Dipan Paul',                                  sub:'01.04.2026',topic:'Rabin-Karp Algorithm for string matching',                       pres:'15.04.2026'},
+  {sl:27,code:'BWU/BAR/24/072',name:'Sagar Sk',                                    sub:'01.04.2026',topic:'Solving the Traveling Salesman Problem with brute force',        pres:'15.04.2026'},
+  {sl:28,code:'BWU/BAR/24/073',name:'Sayan Basak',                                 sub:'01.04.2026',topic:'Floyd-Warshall Algorithm for all-pair shortest path',            pres:'15.04.2026'},
+  {sl:29,code:'BWU/BAR/24/031',name:'UJJAL DOLUI',                                 sub:'01.04.2026',topic:'Maximum flows with Ford-Fulkerson Algorithm',                    pres:'15.04.2026'},
+  {sl:30,code:'BWU/BAR/24/033',name:'ABHISHEK MONDAL',                             sub:'01.04.2026',topic:'Push-Relabel Algorithm for maximum flows',                       pres:'15.04.2026'},
+  {sl:31,code:'BWU/BAR/24/034',name:'SANDIP PARAMANIK',                            sub:'01.04.2026',topic:'Minimum Cost Flows with Cycle Cancelling Algorithm',             pres:'15.04.2026'},
+  {sl:32,code:'BWU/BAR/24/035',name:'ARITRA MALIK',                                sub:'01.04.2026',topic:'Understanding the Class NP',                                     pres:'15.04.2026'},
+  {sl:33,code:'BWU/BAR/24/036',name:'ANIRBAN SARKAR',                              sub:'01.04.2026',topic:'Reducibility and NP-completeness overview',                      pres:'15.04.2026'},
+  {sl:34,code:'BWU/BAR/24/037',name:'ANUBRATA BHATTACHARYA',                       sub:'01.04.2026',topic:'Exploring Vertex Cover problem',                                 pres:'15.04.2026'},
+  {sl:35,code:'BWU/BAR/24/038',name:'MOULENDU SINHA',                              sub:'01.04.2026',topic:'Approximation Algorithms overview',                              pres:'15.04.2026'},
+  {sl:36,code:'BWU/BAR/24/039',name:'MALAIKA FIRDOUS AMIR',                        sub:'01.04.2026',topic:'Solving the set-covering problem with approximation algorithms', pres:'22.04.2026'},
+  {sl:37,code:'BWU/BAR/24/040',name:'PRIYAM JANA',                                 sub:'01.04.2026',topic:'Vertex cover using approximation algorithms',                    pres:'22.04.2026'},
+  {sl:38,code:'BWU/BAR/24/042',name:'SOUMIK PAL',                                  sub:'01.04.2026',topic:'Introduction to K-center clustering',                            pres:'22.04.2026'},
+  {sl:39,code:'BWU/BAR/24/044',name:'HIRAK GANGULY',                               sub:'01.04.2026',topic:'Randomized Algorithms introduction',                             pres:'22.04.2026'},
+  {sl:40,code:'BWU/BAR/24/045',name:'SIBKATULLA AL ISLAM',                         sub:'01.04.2026',topic:'Solving the hiring problem with randomized algorithms',          pres:'22.04.2026'},
+  {sl:41,code:'BWU/BAR/24/046',name:'TURNA BERA',                                  sub:'01.04.2026',topic:'Finding the global Minimum Cut with randomized algorithms',      pres:'22.04.2026'},
+  {sl:42,code:'BWU/BAR/24/047',name:'KUNTAL MANDAL',                               sub:'01.04.2026',topic:'Overview of approximation and randomized algorithms',            pres:'22.04.2026'},
+  {sl:43,code:'BWU/BAR/24/048',name:'SUDIP DAS',                                   sub:'01.04.2026',topic:'Application of brute force techniques',                          pres:'22.04.2026'},
+  {sl:44,code:'BWU/BAR/24/049',name:'RAJARSHEE BERA',                              sub:'01.04.2026',topic:'Application of divide and conquer algorithms',                   pres:'22.04.2026'},
+  {sl:45,code:'BWU/BAR/24/050',name:'KAZI WASIM AKRAM',                            sub:'01.04.2026',topic:'Application of greedy techniques',                               pres:'22.04.2026'},
+  {sl:46,code:'BWU/BAR/24/052',name:'GAUSUL AZAM SK',                              sub:'01.04.2026',topic:'Application of dynamic programming',                             pres:'22.04.2026'},
+  {sl:47,code:'BWU/BAR/24/053',name:'MASUDUL ALAM',                                sub:'01.04.2026',topic:'Stages of algorithm development for problem-solving',            pres:'22.04.2026'},
+  {sl:48,code:'BWU/BAR/24/054',name:'SUBHAM KUMBHAKAR',                            sub:'01.04.2026',topic:'Proof of correctness of algorithms',                             pres:'22.04.2026'},
+  {sl:49,code:'BWU/BAR/24/055',name:'ARITRIK DEV',                                 sub:'01.04.2026',topic:'All-pair shortest path algorithms overview',                     pres:'22.04.2026'},
+  {sl:50,code:'BWU/BAR/24/056',name:'KRISH BISHWAKARMA',                           sub:'01.04.2026',topic:'Recurrence relation basics',                                     pres:'24.04.2026'},
+  {sl:51,code:'BWU/BAR/24/057',name:'BARNALI MANDAL',                              sub:'01.04.2026',topic:'Methods to solve recurrence relations',                          pres:'24.04.2026'},
+  {sl:52,code:'BWU/BAR/24/058',name:'ROHAN KAR',                                   sub:'01.04.2026',topic:'Master Theorem in recurrence relations',                         pres:'24.04.2026'},
+  {sl:53,code:'BWU/BAR/24/059',name:'ROHON DAS',                                   sub:'01.04.2026',topic:'Substitution method in recurrence relations',                    pres:'24.04.2026'},
+  {sl:54,code:'BWU/BAR/24/062',name:'DEBABRATA DEY',                               sub:'01.04.2026',topic:'Recurrence tree method',                                         pres:'24.04.2026'},
+  {sl:55,code:'BWU/BAR/24/063',name:'PRAGYANSHU SAGAR GIRI',                       sub:'01.04.2026',topic:'Brute force techniques overview',                               pres:'24.04.2026'},
+  {sl:56,code:'BWU/BAR/24/065',name:'MAHAPRASHAD KARMAKAR',                        sub:'01.04.2026',topic:'Understanding asymptotic notation',                              pres:'24.04.2026'},
+];
+
+/* ═══════════════════════════════════════════════
+   RENDER & SEARCH
+═══════════════════════════════════════════════ */
+function setCount(id,shown,total){
+  document.getElementById(id).innerHTML=shown===total
+    ?`Showing all <strong>${total}</strong> students`
+    :`Showing <strong>${shown}</strong> of <strong>${total}</strong> students`;
+}
+function mkRow6(r){
+  return`<tr><td class="td-sl">${r.sl}</td><td class="td-code">${r.code}</td><td class="td-name">${r.name}</td><td class="td-date">${r.sub}</td><td class="td-topic">${r.topic}</td><td class="td-presdate">${r.pres}</td></tr>`;
+}
+function mkRow4(r){
+  return`<tr><td class="td-sl">${r.sl}</td><td class="td-code">${r.code}</td><td class="td-name">${r.name}</td><td class="td-topic">${r.topic}</td></tr>`;
+}
+
+function renderTable(data,tbodyId,countId,full,cols){
+  const tb=document.getElementById(tbodyId);
+  if(!data.length){tb.innerHTML=`<tr><td colspan="${cols}" class="no-results">No students matched your search.</td></tr>`;setCount(countId,0,full.length);return}
+  tb.innerHTML=data.map(cols===6?mkRow6:mkRow4).join('');
+  setCount(countId,data.length,full.length);
+}
+function filter(arr,q){return arr.filter(r=>r.code.toLowerCase().includes(q)||r.name.toLowerCase().includes(q))}
+
+renderTable(rosData,'rosTbody','rosCount',rosData,6);
+renderTable(msData, 'msTbody','msCount', msData, 4);
+renderTable(daaData,'daaTbody','daaCount',daaData,6);
+
+['ros','ms','daa'].forEach(k=>{
+  const data=k==='ros'?rosData:k==='ms'?msData:daaData;
+  const cols=k==='ms'?4:6;
+  document.getElementById(k+'Search').addEventListener('input',function(){
+    const q=this.value.trim().toLowerCase();
+    renderTable(q?filter(data,q):data,k+'Tbody',k+'Count',data,cols);
+  });
+});
+
+/* ═══════════════════════════════════════════════
+   NAVIGATION — device back button fully supported
+   Strategy:
+   • Every nav() pushes a real history entry so Android/iOS
+     back gesture and browser back button fire popstate.
+   • popstate reads e.state.page and renders the right page.
+   • On-screen Back buttons call history.back() — device back
+     and on-screen back are identical in effect.
+   • home page uses replaceState (no entry behind it), so
+     pressing back from home exits/minimizes the app naturally.
+═══════════════════════════════════════════════ */
+const pageEls={};
+['home','subjects','topics','ros-detail','ms-detail','daa-detail']
+  .forEach(k=>pageEls[k]=document.getElementById(k));
+
+const searchResets={
+  'ros-detail':()=>{document.getElementById('rosSearch').value='';renderTable(rosData,'rosTbody','rosCount',rosData,6)},
+  'ms-detail': ()=>{document.getElementById('msSearch').value=''; renderTable(msData,'msTbody','msCount',msData,4)},
+  'daa-detail':()=>{document.getElementById('daaSearch').value='';renderTable(daaData,'daaTbody','daaCount',daaData,6)},
+};
+
+function hideAll(){Object.values(pageEls).forEach(p=>p.classList.remove('active'))}
+
+function showPage(name,skipScroll){
+  // Fallback to home if name is unknown
+  if(!pageEls[name]) name='home';
+  requestAnimationFrame(()=>{
+    hideAll();
+    pageEls[name].classList.add('active');
+    if(!skipScroll) window.scrollTo({top:0,behavior:'instant'});
+    if(searchResets[name]) searchResets[name]();
+    // Re-trigger card entry animations
+    pageEls[name].querySelectorAll('.subject-card,.topic-card').forEach(c=>{
+      c.style.animation='none';void c.offsetWidth;c.style.animation='';
+    });
+  });
+}
+
+// Track current page (used for visibility-change safety)
+let cur='home';
+
+// Seed history: home always uses replaceState so back from home
+// exits the app (or goes to whatever was open before the portal)
+history.replaceState({page:'home',idx:0},'',location.href);
+let histIdx=0; // monotonic index so we can detect forward vs back
+
+function nav(name){
+  if(name===cur) return; // already here — do nothing
+  histIdx++;
+  cur=name;
+  history.pushState({page:name,idx:histIdx},'',location.href);
+  showPage(name);
+}
+
+/* ── Button wiring ── */
+document.getElementById('ctaBtn').addEventListener('click', ()=>nav('subjects'));
+document.getElementById('topicBtn').addEventListener('click',()=>nav('topics'));
+document.getElementById('rosCard').addEventListener('click', ()=>nav('ros-detail'));
+document.getElementById('msCard').addEventListener('click',  ()=>nav('ms-detail'));
+document.getElementById('daaCard').addEventListener('click', ()=>nav('daa-detail'));
+
+/* ── Keyboard accessibility for card-buttons ── */
+['rosCard','msCard','daaCard'].forEach(id=>{
+  document.getElementById(id).addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();document.getElementById(id).click()}
+  });
+});
+
+/* ── On-screen Back buttons — just call history.back()
+      Same as device back button: triggers popstate ── */
+['backBtn','backBtn2','backBtn3','backBtn4','backBtn5'].forEach(id=>{
+  document.getElementById(id).addEventListener('click',()=>history.back());
+});
+
+/* ── popstate — handles ALL back/forward navigation:
+      device back gesture, browser back button, on-screen back ── */
+window.addEventListener('popstate',e=>{
+  const page=(e.state&&e.state.page)?e.state.page:'home';
+  histIdx=(e.state&&typeof e.state.idx==='number')?e.state.idx:0;
+  cur=page;
+  showPage(page);
+});
+
+/* ── Android visibility-change safety
+      When the tab is resumed and history state drifted, re-sync ── */
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='visible'){
+    const statePage=history.state&&history.state.page;
+    if(statePage&&statePage!==cur){
+      // History moved while tab was hidden — snap display to match
+      cur=statePage;
+      showPage(statePage,true);
+    }
+  }
+});
+</script>
+</body>
+</html>
